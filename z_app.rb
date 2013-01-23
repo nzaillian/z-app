@@ -1,0 +1,85 @@
+require 'pathname'
+
+@template_root ||= File.expand_path('..', __FILE__)
+@app_name ||= "[app name]"
+@app_path ||= "[app path]"
+
+MOCK = false # mock shell commands (print but do not run)
+
+def rel_copy(full_src, rel_dest, opts={})
+  
+  dest_path = File.dirname(rel_dest)
+  
+  fname = Pathname.new(full_src).basename
+  
+  full_dest = "#{dest_path}"
+  
+  if !File.directory?(full_dest)
+    cmd = "mkdir -p #{full_dest}"
+    
+    puts "mocking #{cmd}" if opts[:mock]
+    
+    if !opts[:mock]
+      run cmd
+    end    
+  end
+  
+  cmd = "cp #{full_src} #{full_dest}/#{fname}"
+  
+  puts "mocking #{cmd}" if opts[:mock]
+  if !opts[:mock]
+    run cmd
+  end
+end
+
+# copy lib files...
+Dir["#{@template_root}/lib/z_app/lib/**/*.rb"].each do |fname|
+  rel_name = fname.gsub("#{@template_root}/lib/z_app/", "")
+  rel_copy(fname, rel_name, :mock => MOCK)
+end
+
+# copy app files
+Dir["#{@template_root}/lib/z_app/**/*"].select{ |f| File.file?(f) }.each do |fname|
+  rel_name = fname.gsub("#{@template_root}/lib/z_app/", "")
+  rel_copy(fname, rel_name, :mock => MOCK)
+end
+
+run "rm public/index.html"
+run "rm app/views/layouts/application.html.erb"
+run "rm app/assets/javascripts/application.js"
+run "rm app/assets/stylesheets/application.css"
+
+route "root :to => 'home#index'"
+
+# inject app name into application template
+application_tpl_content = File.read("app/views/layouts/application.html.haml")
+new_content = application_tpl_content.gsub("%%%APP_NAME%%%", @app_name)
+application_tpl_file = File.open("app/views/layouts/application.html.haml", 'w')
+application_tpl_file.write(new_content)
+application_tpl_file.close
+
+
+
+gem 'jquery-rails'
+gem 'devise'
+gem 'cancan'
+gem 'haml-rails'
+gem 'json'
+gem 'bcrypt-ruby', :require => 'bcrypt'
+gem 'jquery-ui-rails', '2.0.2'
+gem 'mysql2'
+gem 'execjs'
+gem 'therubyracer'
+gem 'exception_notification'
+gem 'daemons', :require => 'daemons'
+gem 'delayed_job_active_record', '0.3.2'
+gem 'stripe', :require => 'stripe'
+gem 'will_paginate'
+gem 'turbolinks'
+gem 'tabs_on_rails'
+gem 'handles_sortable_columns'
+gem 'amoeba'
+gem 'capistrano'
+gem 'rspec-rails'
+gem 'spork-rails'  
+gem 'font-awesome-rails'

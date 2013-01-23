@@ -1,0 +1,271 @@
+@import 'common/common'
+
+html
+  margin: 0px 0px 0px 0px
+  min-height: 100%
+  height: 100%
+  min-height: 100%
+
+body 
+  margin: 0px 0px 0px 0px
+  text-align:center
+  background-color: #F7F7F7
+  background: url(<%= asset_path 'common/bg_tan.png' %>)
+  font-family:  $ff
+  color: #574742
+  line-height: 100%
+  height: 100%
+  min-height: 100%
+  min-width: 800px
+
+
+html, body
+  width: 100%
+  margin: 0px 0px 0px 0px
+
+* 
+  box-sizing: border-box
+  -moz-box-sizing: border-box
+  -webkit-box-sizing: border-box
+
+div
+  line-height: 144%
+
+ul
+  list-style-type: none
+  text-align: left
+
+  li, li a
+    text-align: left        
+
+input, button, select, textarea
+  font-family: $ff
+
+#wrapper 
+  width: 100%
+  height: auto
+  min-height: 100%
+  text-align: center
+  margin: 0px 0px 90px 0px
+  padding: 0px 0px 0px 0px
+
+#content
+  width: 960px
+  padding: 40px 0px 0px 0px
+  @include centered
+  min-height: 200px
+  margin-top: 0px
+  margin-bottom: 20px
+
+#header
+  $h_grad_min: #475255
+  $h_grad_max: #59686c
+  width: 100%
+  height: 58px
+  position: relative
+  z-index: 5
+  background: linear-gradient(#FAFAFA, #EAEAEA)
+  background: -moz-linear-gradient(#FAFAFA, #EAEAEA)
+  background: -ms-linear-gradient(#FAFAFA, #EAEAEA)
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #FAFAFA), color-stop(100%, #EAEAEA))
+  background: -webkit-linear-gradient(#FAFAFA, #EAEAEA)
+  background: -o-linear-gradient(#FAFAFA, #EAEAEA)
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa',endColorstr='#eaeaea')"
+  background: linear-gradient(#FAFAFA, #EAEAEA)
+  border-bottom: 1px solid #CACACA
+
+  .inner, .header-inner
+    width: 960px
+    text-align: left
+    @include centered
+
+    #logo, #logo:hover
+      position: absolute
+      display: block
+      margin-top: 18px
+      margin-left: -11px
+      height: auto
+      width: auto
+      font-size: 34px
+      color: #444
+      text-decoration: none
+      font-weight: bold
+      font-family: 'Passion One', sans-serif
+      font-weight: 700
+
+      img
+        width: 298px
+        margin: 0px
+        top: 0px
+
+    #logo.light
+      margin-top: 3px
+      margin-left: 0px
+      height: 43px  
+
+.auth-button, .refined-button
+  position: relative
+  float: right
+  z-index: 9999
+  font-size: 16px
+  margin-top: 11px
+  margin-right: 1px
+  margin-left: 10px
+
+#footer
+  clear: both
+  width: 100%
+  height: 40px
+  font-size: 15px
+  padding-right: 20px
+  padding-left: 20px
+  position: relative
+  width: 100%
+  text-align: left
+  margin-top: -40px
+
+  .issue-pipe
+    display: inline-block
+    width: 30px
+    text-align: center  
+
+  a, a:hover
+    color: #EB5F3A
+    text-decoration: none
+    font-weight: bold
+
+  ul
+    margin-top: 7px
+    clear: both
+    float: right
+
+  ul, li
+    display: inline-block
+
+  li
+    margin-right: 20px
+
+  ul li a
+    color: #666
+
+form
+  margin-bottom: 0px
+
+input[type='text'], input[type='password']
+  height: 26px
+  padding: 3px 4px
+  vertical-align: middle
+
+.input-label, .or-wrap
+  text-align: right
+  font-size: 14px
+  padding-top: 4px 
+
+.alert
+  margin: 15px 0px 0px 0px
+  clear: both
+
+.layout-application .alert  
+  margin-bottom: 32px
+
+.alert.alert-error.validation-errors
+  text-align: left
+
+  ul
+    margin-top: 5px
+    list-style-type: disc
+
+.layout-application .alert.alert-error.validation-errors
+  margin-bottom: 32px    
+
+.left-align 
+  text-align: left
+
+.right-align
+  text-align: right
+
+.center-align
+  text-align: center
+
+.instructions
+  font-size: 14px
+  text-align: left
+
+
+ul.err-list
+  margin: 10px auto 0px auto
+  list-style-type: disc
+  font-style: italic
+  padding-left: 42px
+
+[class^="icon-"],
+[class*=" icon-"]
+  margin-top: 1px
+
+.bold
+  font-weight: bold
+
+h1, h2, h3, h4
+  text-align: left
+  margin: 0px
+  line-height: 100%
+
+h4
+  padding-bottom: 6px
+  margin: 0px 0px 10px 0px
+
+.well h4
+  border-bottom: 1px dashed #b4b4b4    
+
+form
+  margin: 0px  
+
+.header
+  font-size: 22px
+  text-align: left
+
+.breaker
+  clear: both
+
+.clear
+  clear: both    
+
+i, [class^="icon-"], [class*=" icon-"],
+.btn [class^="icon-"], .nav [class^="icon-"], 
+.btn [class*=" icon-"], .nav [class*=" icon-"]
+  background-image: none
+  font-family: FontAwesome
+  font-weight: normal
+  font-style: normal
+  line-height: 1
+  -webkit-font-smoothing: antialiased
+  font-smooth: always
+  text-decoration: none
+
+.breaker  
+  height: 10px
+
+a
+  cursor: pointer
+
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input
+  margin-bottom: 0px  
+
+.disabled
+  cursor: not-allowed  
