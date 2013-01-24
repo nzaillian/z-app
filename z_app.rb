@@ -12,10 +12,8 @@ def rel_copy(full_src, rel_dest, opts={})
   
   fname = Pathname.new(full_src).basename
   
-  full_dest = "#{dest_path}"
-  
-  if !File.directory?(full_dest)
-    cmd = "mkdir -p #{full_dest}"
+  if !File.directory?(dest_path)
+    cmd = "mkdir -p #{dest_path}"
     
     if !opts[:mock]
       run cmd
@@ -24,13 +22,14 @@ def rel_copy(full_src, rel_dest, opts={})
     end    
   end
   
-  cmd = "cp #{full_src} #{full_dest}/#{fname}"
+  cmd = "cp #{full_src} #{dest_path}/#{fname}"
   
   if !opts[:mock]
     run cmd
   else
     puts "mocking #{cmd}"
   end
+
 end
 
 # copy app files
