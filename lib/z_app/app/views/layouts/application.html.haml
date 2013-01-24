@@ -3,7 +3,7 @@
 %html
   %head
     %title 
-      = @title || "demoapp"
+      = @title || "%%%APP_NAME%%%"
     %link{:rel => "icon", :type => "image/png", :href => asset_path("favicon.png")}      
     =stylesheet_link_tag "application"
     =javascript_include_tag "application"
@@ -29,7 +29,7 @@
     #header
       .inner
         =link_to nil, :href => root_path, :id => 'logo' do
-          ="appdemo"
+          ="%%%APP_NAME%%%"
         -if user_signed_in?
           =link_to "Sign Out", destroy_user_session_path, :method => :delete,
           :class => 'auth-button btn heavy-rect action'        
