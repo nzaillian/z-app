@@ -17,25 +17,20 @@ def rel_copy(full_src, rel_dest, opts={})
   if !File.directory?(full_dest)
     cmd = "mkdir -p #{full_dest}"
     
-    puts "mocking #{cmd}" if opts[:mock]
-    
     if !opts[:mock]
       run cmd
+    else
+      puts "mocking #{cmd}"
     end    
   end
   
   cmd = "cp #{full_src} #{full_dest}/#{fname}"
   
-  puts "mocking #{cmd}" if opts[:mock]
   if !opts[:mock]
     run cmd
+  else
+    puts "mocking #{cmd}"
   end
-end
-
-# copy lib files...
-Dir["#{@template_root}/lib/z_app/lib/**/*.rb"].each do |fname|
-  rel_name = fname.gsub("#{@template_root}/lib/z_app/", "")
-  rel_copy(fname, rel_name, :mock => MOCK)
 end
 
 # copy app files
