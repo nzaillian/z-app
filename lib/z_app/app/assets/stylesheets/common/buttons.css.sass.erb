@@ -224,25 +224,3 @@ $btn_grad_to: #2577c9
   $g_from: #249FD3
   $g_to: #1E85B0
   @include gradient_ext($g_from, $g_to)
-
-.schedule-now
-  $bc: #994700
-  $min_grad: #fdbf2a
-  $max_grad: #ff6000
-  display: block
-  font-size: 25px
-  font-family: $ff
-  color: #072150
-  font-weight: 900
-  font-style: italic
-  padding: 14px 60px
-  @include gradient_ext($min_grad, $max_grad)
-  border: 2px solid $bc
-  @include rounded_corners(5px)
-  width: 308px
-
-.schedule-now:hover
-  text-decoration: none
-  cursor: pointer
-  color: #072150
-  @include basic_shadow(10px)

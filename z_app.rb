@@ -53,8 +53,6 @@ application_tpl_file = File.open("app/views/layouts/application.html.haml", 'w')
 application_tpl_file.write(new_content)
 application_tpl_file.close
 
-
-
 gem 'jquery-rails'
 gem 'devise'
 gem 'cancan'
@@ -78,3 +76,19 @@ gem 'capistrano'
 gem 'rspec-rails'
 gem 'spork-rails'  
 gem 'font-awesome-rails'
+
+# Users table migration and Devise routes
+migration_timestamp = Time.now.utc.strftime("%Y%m%d%H%M%S")
+run "mkdir db/migrate" if !File.directory?("db/migrate")
+run "cp #{@template_root}/lib/migrations/create_users.rb db/migrate/#{migration_timestamp}_create_users.rb"
+
+rake "db:migrate"
+
+route <<-CODE
+  devise_for :users, :controllers => {
+    :sessions => "users/sessions",
+    :passwords => "users/passwords",
+    :registrations => "users/registrations",
+    :confirmations => "users/confirmations"
+  }
+CODE

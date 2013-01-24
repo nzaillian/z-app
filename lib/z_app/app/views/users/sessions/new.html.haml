@@ -1,0 +1,31 @@
+- content_for :content do
+  .dashboard_grid_container
+    .widget-box.user-box.new-session
+      .widget-box-heading
+        Sign In
+      .widget-box-inner
+        = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+          .input-label.grid_2
+            Email
+          = f.text_field :email, :class => 'grid_2'
+          .breaker
+          .input-label.grid_2
+            Password
+          = f.password_field :password, :class => 'grid_2'
+          .breaker
+          =hidden_field_tag "next", params[:next]
+
+          =hidden_field_tag 'company_employee_id', params[:company_employee_id]
+          =hidden_field_tag 'company_employee_token', params[:company_employee_token]            
+
+          = f.submit "Sign In", :class => 'btn heavy-rect action grid_1', :id => 'sign-in-button',
+          :disable_with => "Signing In..."
+          .breaker
+
+          - if devise_mapping.rememberable?
+            %div
+              = f.check_box :remember_me
+              = f.label :remember_me
+        -state_params = {:company_employee_id => params[:company_employee_id], :company_employee_token => params[:company_employee_token]}                             
+        = render :partial => "/users/links", :locals => {:state_params => state_params}
+        .clear
