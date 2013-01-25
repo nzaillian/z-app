@@ -1,0 +1,9 @@
+-content_for :content do
+  .breadcrumb.sub
+    = link_to 'Back', <%= index_helper %>_path
+
+  %h3 Editing <%= singular_table_name %>
+
+  = render 'form'
+
+  = link_to 'Show', @<%= singular_table_name %>

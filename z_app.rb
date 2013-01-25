@@ -45,6 +45,8 @@ run "rm app/assets/stylesheets/application.css"
 
 route "root :to => 'home#index'"
 
+route "match 'timezone' => 'application#session_timezone'"
+
 # inject app name into application template
 application_tpl_content = File.read("app/views/layouts/application.html.haml")
 new_content = application_tpl_content.gsub("%%%APP_NAME%%%", @app_name)
@@ -53,28 +55,54 @@ application_tpl_file.write(new_content)
 application_tpl_file.close
 
 gem 'jquery-rails'
+
 gem 'devise'
+
 gem 'cancan'
+
 gem 'haml-rails'
+
 gem 'json'
+
 gem 'bcrypt-ruby', :require => 'bcrypt'
+
 gem 'jquery-ui-rails', '2.0.2'
+
 gem 'mysql2'
+
 gem 'execjs'
+
 gem 'therubyracer'
+
 gem 'exception_notification'
+
 gem 'daemons', :require => 'daemons'
+
 gem 'delayed_job_active_record', '0.3.2'
+
 gem 'stripe', :require => 'stripe'
+
 gem 'will_paginate'
+
 gem 'turbolinks'
+
 gem 'tabs_on_rails'
+
 gem 'handles_sortable_columns'
+
 gem 'amoeba'
+
 gem 'capistrano'
+
 gem 'rspec-rails'
+
 gem 'spork-rails'  
+
 gem 'font-awesome-rails'
+
+gem 'formtastic'
+
+gem 'better_errors'
 
 # Users table migration and Devise routes
 migration_timestamp = Time.now.utc.strftime("%Y%m%d%H%M%S")

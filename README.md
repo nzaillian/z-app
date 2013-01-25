@@ -15,6 +15,8 @@ My current Rails app template.  Generates a nice skeleton app with many helpful 
 
 * some @font-face fonts (see app/assets/fonts)
 
+* some customizations to scaffolding (controller scaffolding DRYed up somewhat and augmented to include cancan auth checks; HAML view scaffolding adjusted to my liking with formtastic forms and other changes).
+
 USAGE
 -----
 To use:
