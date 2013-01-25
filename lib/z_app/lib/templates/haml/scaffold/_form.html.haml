@@ -1,4 +1,4 @@
-.form-wrap
+%ul.form-wrap
   = semantic_form_for @<%= singular_table_name %> do |f|
     = render_validation_errors(@<%= singular_table_name %>)
     <% for attribute in attributes %>

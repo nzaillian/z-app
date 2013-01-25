@@ -27,26 +27,3 @@ window.hide_alerts = ->
 $(document).on('pjax:end', window.hide_alerts)
 
 jQuery.curCSS = jQuery.css
-
-init_tooltip = (element) ->
-  content = element.find(".tooltip-content").text()
-  if content == ""
-    content = element.attr("data-tooltip-content")
-  element.tooltip(
-    title: content,
-    placement: element.attr('data-tooltip-placement') || 'left',
-    trigger: element.attr('data-tooltip-trigger') || 'hover'
-  )
-
-init_tooltips = ->
-  $(".tooltip-anchor").each( ->  
-    init_tooltip($(this))
-  )
-
-$(".tooltip-anchor").livequery( ->
-  init_tooltip($(this))
-)
-
-# $(document).bind('ready page:load', ->
-#   init_tooltips()
-# )

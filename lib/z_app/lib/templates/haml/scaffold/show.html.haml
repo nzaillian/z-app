@@ -1,11 +1,13 @@
 -content_for :content do
   .breadcrumb.sub
     = link_to 'Back', <%= index_helper %>_path
+  
+  %h3
+    <%= singular_table_name.capitalize %> Details
 
-  <% for attribute in attributes -%>
-  %p
-      %b <%= attribute.human_name %>:
-      = @<%= singular_table_name %>.<%= attribute.name %>
-  <% end -%>
+  %ul.fields
+    <% for attribute in attributes %>
+    =titled_field("<%= attribute.human_name %>", @<%= singular_table_name %>.<%= attribute.name %>)
+    <% end %>
 
   = link_to 'Edit', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>)

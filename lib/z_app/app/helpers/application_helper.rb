@@ -1,5 +1,6 @@
 module ApplicationHelper
   include DeviseHelper
+  include UiHelper
 
   def controller?(*controller)
     controller.include?(params[:controller])
@@ -58,18 +59,14 @@ module ApplicationHelper
     end
   end
 
-  def partial_opt(assigns, key, default)
-    if assigns.has_key?(key) and assigns[key] != nil
-      assigns[key]
+  def default_opt(name, &block)
+    was_assigned, value = eval(
+      "[ local_assigns.has_key?(:#{name}), local_assigns[:#{name}] ]", 
+      block.binding)
+    if was_assigned
+      value
     else
-      default
+      yield
     end
-  end
-
-  # return expr if object is defined, else return default
-  def if_def(obj, meth, *params)
-    if defined?(obj) and obj != nil
-      obj.send(meth, *params)
-    end
-  end
+  end  
 end
