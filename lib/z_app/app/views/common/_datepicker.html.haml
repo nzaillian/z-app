@@ -1,0 +1,8 @@
+%li.datepicker-input-wrap
+  %label.label
+    =label
+  .datepicker-field-wrap
+    .date-select-wrap.hidden
+      =form_builder.date_select attr_name, {}, {:class => 'date-select'}
+
+    =text_field_tag "#{attr_name}_input", "", :placeholder => "click to select date", :class => classes
