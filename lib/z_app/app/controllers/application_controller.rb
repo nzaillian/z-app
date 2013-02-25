@@ -85,4 +85,18 @@ class ApplicationController < ActionController::Base
       raise CanCan::AccessDenied
     end
   end  
+
+  def bounce_if_not_logged_in
+    unless user_signed_in?
+      msg = <<-EOS
+        You need to be logged in to do that.  If you don't have an account, 
+        you can create one immediately for free by 
+        <a href="#{@url_helpers.new_user_registration_path}">clicking here</a>.
+      EOS
+      
+      flash[:notice] = msg.html_safe
+      
+      redirect_to(new_user_session_path(:next => request.path)) and return
+    end    
+  end  
 end

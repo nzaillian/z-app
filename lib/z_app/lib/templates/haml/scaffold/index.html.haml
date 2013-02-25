@@ -4,21 +4,21 @@
   %table.table
     %thead
       %tr
-  <% for attribute in attributes -%>
-      %th <%= attribute.human_name %>
-  <% end -%>
-      %th
+<% for attribute in attributes %>
+        %th <%= attribute.human_name %>
+<% end %>
+        %th
         %th
         %th
     %tbody
       - @<%= plural_table_name %>.each do |<%= singular_table_name %>|
         %tr
-  <% for attribute in attributes -%>
-      %td= <%= singular_table_name %>.<%= attribute.name %>
-  <% end -%>
-      %td= link_to 'Show', <%= singular_table_name %>
-        %td= link_to 'Edit', edit_<%= singular_table_name %>_path(<%= singular_table_name %>)
-        %td= link_to 'Destroy', <%= singular_table_name %>, <%= key_value :method, ":delete" %>, <%= key_value :data, "{ #{key_value :confirm, "'Are you sure?'"} }" %>
+<% for attribute in attributes %>
+          %td= <%= singular_table_name %>.<%= attribute.name %>
+<% end %>
+          %td= link_to 'Show', <%= singular_table_name %>
+            %td= link_to 'Edit', edit_<%= singular_table_name %>_path(<%= singular_table_name %>)
+            %td= link_to 'Destroy', <%= singular_table_name %>, <%= key_value :method, ":delete" %>, <%= key_value :data, "{ #{key_value :confirm, "'Are you sure?'"} }" %>
 
   %br
 

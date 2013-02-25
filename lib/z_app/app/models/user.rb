@@ -10,4 +10,18 @@ class User < ActiveRecord::Base
 
   validates :first_name, :presence => true
   validates :last_name, :presence => true
+
+  symbolize :role
+
+  after_initialize :set_defaults
+
+  def admin?
+    role == :admin
+  end
+
+  private
+
+  def set_defaults
+    self.role = :user if role == nil
+  end
 end

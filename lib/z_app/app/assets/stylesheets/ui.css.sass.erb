@@ -360,6 +360,12 @@ ul.fields
   width: 320px
   margin: 0px
 
+  li
+    margin-bottom: 4px
+  
+  li:last-child
+    margin-bottom: 0px
+
   li.titled-field
     white-space: nowrap
 
@@ -375,3 +381,54 @@ ul.fields
     .value  
       width: 200px  
       text-align: left
+  
+  li.actions
+    text-align: left
+    padding: 12px 0px 0px 94px
+    font-style: italic
+
+.box
+  box-shadow: 2px 1px 4px -1px rgba(0, 0, 0, 0.15), 0 1px rgba(255,255,255,1.0) inset, 0 -1px rgba(255,255,255,0.5) inset
+  border: 1px solid #bbb
+  background: #f9f9f9
+  @include rounded_corners(3px)
+  padding: 24px
+  position: relative
+
+  .trash-button
+    position: absolute
+    bottom: 18px
+    right: 20px  
+
+.box.multi-col
+  padding: 0px 0px 0px 0px
+  
+  ul.actions
+    margin: 0px
+    padding: 0px
+    li
+      background-color: #e5e5e5
+      border-top: 1px solid #bbb  
+      padding: 14px
+      margin-bottom: 0px
+      @include rounded_corners_ext(0px, 0px, 3px, 3px)
+      @include box_shadow(inset 0 1px 0 #fff)  
+
+      input[type="submit"], button
+        float: none
+
+.form-wrap.box
+  padding: 24px 0px 0px 0px
+
+a, button
+  i
+    padding-right: 5px
+
+.trash-button
+  color: #000
+  display: inline-block
+  float: right
+
+.rel-right
+  position: relative
+  right: 0px

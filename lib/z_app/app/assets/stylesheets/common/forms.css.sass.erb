@@ -1,14 +1,44 @@
-.form-wrap
-  margin-top: 12px
-  width: 326px
+@import 'common/common'
+
+.dashboard_grid_container .form-wrap, .form-wrap
+  width: 408px
+  margin: 18px 0px
+  padding: 24px 0px 0px 0px
+  position: relative
 
   li
     margin-bottom: 16px
     white-space: nowrap
+    padding: 0px 38px
+
+    input, label, .datepicker-field-wrap, .time-select-wrap
+      float: none
+      display: inline-block
+
+    input.first-name
+      width: 84px
+    
+    input.last-name
+      width: 114px
+
+    input[type='radio'], input[type='checkbox']
+      margin: 2px 0 0      
+
+  li.text
+    textarea
+      height: 92px
 
   li.error
     input
       border: 1px solid #D14
+
+  .actions li
+    background-color: #e5e5e5
+    border-top: 1px solid #bbb  
+    padding: 14px
+    margin-bottom: 0px
+    @include rounded_corners_ext(0px, 0px, 3px, 3px)
+    @include box_shadow(inset 0 1px 0 #fff)
 
   label, legend.label
     font-weight: bold
@@ -38,6 +68,7 @@
       li
         display: inline-block
         margin: 0px
+        padding: 0px
 
         label
           width: 108px
@@ -45,7 +76,7 @@
           padding-top: 13px
 
         input[type="radio"]
-          margin-top: 6px
+          margin: 1px 4px 0px 0px
 
   li.radio, li.checkbox
     padding-left: 0px
@@ -56,7 +87,6 @@
     padding-top: 5px
 
   input[type="submit"]
-    float: right
 
   p.inline-errors
     text-align: right
