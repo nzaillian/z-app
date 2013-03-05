@@ -6,7 +6,7 @@
       .widget-box-inner
         = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|      
 
-          - devise_error_messages!  
+          = render_validation_errors(resource)
 
           .input-label.grid_2
             New Password
@@ -16,4 +16,5 @@
             Confirm New Password
           = f.password_field :password_confirmation
           .breaker
-          =f.submit "Change My Password", :class => 'grid_2 btn action', :id => 'change-password-submit"
+          = f.hidden_field :reset_password_token, :value => (params[:reset_password_token] || params[:user][:reset_password_token])          
+          =f.submit "Change My Password", :class => 'grid_2 btn action', :id => 'change-password-submit'
